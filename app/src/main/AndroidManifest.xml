@@ -15,7 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".SignupActivity"></activity>
+        <activity
+            android:name=".mainvoteactivity"
+            android:label="@string/title_activity_mainvoteactivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+        </activity>
+        <activity android:name=".SignupActivity" />
         <activity android:name=".Loginactivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

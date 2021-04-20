@@ -12,7 +12,6 @@
         android:layout_width="211dp"
         android:layout_height="78dp"
         android:layout_marginStart="111dp"
-        android:layout_marginTop="129dp"
         android:layout_marginEnd="132dp"
         android:layout_marginBottom="187dp"
 
@@ -24,8 +23,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
@@ -41,7 +40,7 @@
         android:textColor="#17D4DA"
         android:textSize="55sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/personName"
+        app:layout_constraintBottom_toTopOf="@id/personName2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +52,7 @@
         android:layout_height="72dp"
 
         android:ems="10"
-        android:hint="Enter Name"
+        android:hint="@string/enter_name"
         android:inputType="textPersonName"
 
         android:textColor="#F8F7F5"
@@ -64,7 +63,8 @@
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
+        app:layout_constraintVertical_bias="0.309"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/password2"
@@ -76,14 +76,15 @@
         android:layout_marginEnd="72dp"
 
         android:layout_marginBottom="68dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Enter Password"
-        android:inputType="textPersonName|textEmailSubject"
+        android:hint="@string/enter_password"
+        android:inputType="textPersonName|textPassword"
         android:textColor="#F3EAEA"
         android:textColorHint="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/login2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personName2" />
+        app:layout_constraintTop_toBottomOf="@id/personName2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
