@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sitpoll.ui.showPolls.showPollsFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -18,6 +21,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+
+import java.util.ArrayList;
 
 public class Loginactivity extends AppCompatActivity {
     EditText email1;
@@ -101,6 +106,8 @@ public class Loginactivity extends AppCompatActivity {
         email1= findViewById(R.id.personName2);
         password1= findViewById(R.id.password2);
         auth=FirebaseAuth.getInstance();
+
+
 
 
 
