@@ -9,8 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="410dp"
-        android:layout_height="195dp"
+        android:layout_width="409dp"
+        android:layout_height="188dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="76dp"
         android:layout_marginBottom="460dp"
@@ -22,14 +22,15 @@
 
         <TextView
             android:id="@+id/bigusername"
-            android:layout_width="166dp"
-            android:layout_height="137dp"
+            android:layout_width="147dp"
+            android:layout_height="118dp"
             android:layout_marginStart="133dp"
             android:layout_marginEnd="163dp"
             android:layout_marginBottom="87dp"
             android:foregroundGravity="fill"
             android:gravity="fill"
-            android:text="C"
+            android:text="@string/string_c"
+
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="#F1E9E9"
@@ -44,17 +45,15 @@
 
         <TextView
             android:id="@+id/username"
-            android:layout_width="290dp"
+            android:layout_width="0dp"
             android:layout_height="55dp"
-            android:layout_marginStart="58dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="66dp"
             android:layout_marginBottom="14dp"
             android:background="#090909"
-            android:text="Username"
+            android:text="@string/username"
             android:textAlignment="center"
             android:textColor="#F4EFEF"
-            android:textSize="45sp"
+            android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,19 +65,27 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="178dp"
+        android:layout_width="0dp"
         android:layout_height="65dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="117dp"
-        android:layout_marginBottom="333dp"
-        android:text="Sample Poll"
+        android:layout_marginTop="36dp"
+        android:text="@string/sample_poll"
         android:textAlignment="center"
         android:textColor="#EFE8E8"
         android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.example.sitpoll.ui.showPolls.showPollsFragment"
+        android:layout_width="403dp"
+        android:layout_height="353dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

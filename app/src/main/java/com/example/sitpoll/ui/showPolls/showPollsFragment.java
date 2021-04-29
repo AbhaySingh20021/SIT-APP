@@ -1,10 +1,9 @@
-package com.example.sitpoll.ui.gallery;
+package com.example.sitpoll.ui.showPolls;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,16 +13,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.sitpoll.R;
 
-public class GalleryFragment extends Fragment {
+public class showPollsFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private showpollsViewModel showpollsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        showpollsViewModel =
+                new ViewModelProvider(this).get(showpollsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_showpolls, container, false);
+
+        showpollsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
 

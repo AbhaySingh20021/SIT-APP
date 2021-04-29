@@ -19,4 +19,8 @@
     <string name="enter_name">Enter Name</string>
     <string name="enter_password">Enter Password</string>
     <string name="a">A</string>
+    <string name="c">C</string>
+    <string name="string_c">C</string>
+    <string name="username">Username</string>
+    <string name="sample_poll">Sample Poll</string>
 </resources>

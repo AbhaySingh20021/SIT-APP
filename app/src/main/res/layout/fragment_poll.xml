@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#050505"
-    tools:context=".ui.gallery.GalleryFragment">
+    tools:context=".ui.CreatePoll.CreatePollFragment">
 
     <TextView
         android:id="@+id/textView4"
@@ -27,65 +27,87 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/createtv"
+        android:layout_width="314dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="74dp"
+        android:clickable="true"
+        android:fontFamily="@font/berkshire_swash"
+        android:gravity="center"
+        android:text="Create"
+        android:textColor="#CEE3E3"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <EditText
         android:id="@+id/question"
-        android:layout_width="402dp"
-        android:layout_height="59dp"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
         android:layout_marginTop="44dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="441dp"
         android:ems="10"
+        android:fontFamily="cursive"
         android:hint="Enter Your Question Here"
         android:inputType="textPersonName"
         android:textColor="#F1E8E8"
         android:textColorHint="#0ACCB1"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/question2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/question2"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:id="@+id/option1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="354dp"
         android:ems="10"
+        android:fontFamily="cursive"
         android:hint="Option 1"
         android:inputType="textPersonName"
         android:textColor="#F1E8E8"
         android:textColorHint="#0ACCB1"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/question3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/question" />
 
     <EditText
-        android:id="@+id/question3"
+        android:id="@+id/option2"
         android:layout_width="409dp"
         android:layout_height="65dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="248dp"
         android:ems="10"
+        android:fontFamily="cursive"
         android:hint="Option 2"
         android:inputType="textPersonName"
         android:textColor="#F1E8E8"
         android:textColorHint="#0ACCB1"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/question4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question2" />
+        app:layout_constraintTop_toBottomOf="@+id/option1" />
 
     <EditText
-        android:id="@+id/question4"
+        android:id="@+id/option3"
         android:layout_width="402dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="144dp"
         android:ems="10"
+        android:fontFamily="cursive"
         android:hint="Option 3"
         android:inputType="textPersonName"
         android:textColor="#F1E8E8"
@@ -94,5 +116,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question3" />
+        app:layout_constraintTop_toBottomOf="@+id/option2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

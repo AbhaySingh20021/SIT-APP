@@ -2,17 +2,24 @@ package com.example.sitpoll;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.FirebaseDatabase;
 import com.parse.ParseUser;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -25,15 +32,22 @@ public class mainvoteactivity extends AppCompatActivity {
 
 
     private AppBarConfiguration mAppBarConfiguration;
+    FirebaseAuth auth;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainvoteactivity);
+        auth=FirebaseAuth.getInstance();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
+        toolbar.setTitle("SitApp");
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,9 +59,12 @@ public class mainvoteactivity extends AppCompatActivity {
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        String bigu= ParseUser.getCurrentUser().getUsername().toString();
-        bigu= bigu.substring(0,2);
-        System.out.println(bigu);
+
+
+
+//        String bigu= ParseUser.getCurrentUser().getUsername().toString();
+        //bigu= bigu.substring(0,2);
+      //  System.out.println(bigu);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
