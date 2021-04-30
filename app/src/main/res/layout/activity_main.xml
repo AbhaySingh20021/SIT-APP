@@ -80,4 +80,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="224dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="99dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="22dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.sitpoll.ui.CreatePoll;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +17,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.sitpoll.R;
+import com.example.sitpoll.ui.showPolls.ShowOnePoll;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -41,7 +45,20 @@ public class CreatePollFragment extends Fragment {
         maps.put("option2",option2.getText().toString());
         maps.put("option3",option3.getText().toString());
 
-        FirebaseDatabase.getInstance().getReference().child("Polls").child(pollId).setValue(maps);
+        try {
+
+            FirebaseDatabase.getInstance().getReference().child("Polls").child(pollId).setValue(maps);
+            Toast.makeText(getActivity(), "Poll Created", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getActivity(), ShowOnePoll.class);
+            intent.putExtra("quesUuid",pollId);
+            startActivity(intent);
+        }catch (Exception e){
+
+            Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+        }
+
 
     }
 
@@ -68,6 +85,7 @@ public class CreatePollFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 createpoll();
+
             }
         });
         createPOllModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
