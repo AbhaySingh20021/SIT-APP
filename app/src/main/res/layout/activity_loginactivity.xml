@@ -11,8 +11,6 @@
         android:id="@+id/login2"
         android:layout_width="211dp"
         android:layout_height="78dp"
-        android:layout_marginStart="111dp"
-        android:layout_marginEnd="132dp"
         android:layout_marginBottom="187dp"
 
         android:background="@drawable/roundbutton"
@@ -23,26 +21,24 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="249dp"
         android:layout_height="89dp"
-        android:layout_marginStart="99dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginBottom="69dp"
+        android:layout_marginBottom="595dp"
         android:text="@string/login"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="#17D4DA"
         android:textSize="55sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/personName2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,10 +47,11 @@
         android:layout_width="267dp"
         android:layout_height="72dp"
 
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/enter_name"
-        android:inputType="textPersonName"
 
+        android:inputType="textPersonName"
         android:textColor="#F8F7F5"
         android:textColorHint="@color/white"
         android:textSize="24sp"
@@ -63,8 +60,7 @@
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.309" />
 
     <EditText
         android:id="@+id/password2"

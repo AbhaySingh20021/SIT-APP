@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#201B1B"
+    android:background="#070707"
     tools:context=".SignupActivity">
 
     <Button
@@ -12,10 +12,8 @@
         android:layout_width="211dp"
         android:layout_height="78dp"
 
-        android:layout_marginStart="90dp"
         android:layout_marginTop="25dp"
 
-        android:layout_marginEnd="110dp"
         android:layout_marginBottom="96dp"
         android:background="@drawable/roundbutton"
         android:onClick="signUser"
@@ -24,78 +22,74 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 
     <EditText
         android:id="@+id/personName"
-        android:layout_width="267dp"
+        android:layout_width="0dp"
         android:layout_height="72dp"
 
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="72dp"
         android:ems="10"
 
-        android:hint="Enter Name"
+        android:hint="Name"
         android:inputType="textPersonName"
         android:textColor="#F8F7F5"
         android:textColorHint="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.283" />
 
     <EditText
         android:id="@+id/prn1"
-        android:layout_width="269dp"
+        android:layout_width="0dp"
         android:layout_height="66dp"
 
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="72dp"
+        android:layout_marginTop="275dp"
 
+        android:layout_marginBottom="390dp"
         android:ems="10"
-        android:hint="Enter Prn"
+        android:hint="Prn"
         android:inputType="number|textPostalAddress"
         android:textColor="#F3EAEA"
         android:textColorHint="@color/white"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="269dp"
+        android:layout_width="0dp"
         android:layout_height="66dp"
 
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="72dp"
+        android:layout_marginTop="363dp"
 
+        android:layout_marginBottom="302dp"
         android:ems="10"
-        android:hint="Enter Email"
+        android:hint="Email"
         android:inputType="textPersonName"
         android:textColor="#F3EAEA"
         android:textColorHint="@color/white"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="268dp"
+        android:layout_width="0dp"
         android:layout_height="62dp"
 
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -104,7 +98,7 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.68" />
