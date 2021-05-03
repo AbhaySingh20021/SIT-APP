@@ -28,10 +28,7 @@ public class ShowOnePoll extends AppCompatActivity {
     ArrayAdapter arrayAdapter;
     Intent intent;
 
-
     ArrayList<String> options = new ArrayList<>();
-
-
 
     public void selectans(int position){
 
@@ -41,7 +38,8 @@ public class ShowOnePoll extends AppCompatActivity {
         String user_uid= auth.getCurrentUser().getUid();
         FirebaseDatabase.getInstance().getReference().child("UserData").child(user_uid).child("pollsanswered").child(quesUuid).setValue(position);
 
-            }
+    }
+
 
 
     @Override
@@ -53,7 +51,7 @@ public class ShowOnePoll extends AppCompatActivity {
         TextView from= findViewById(R.id.textView7);
         listView = findViewById(R.id.listview1);
         intent = getIntent();
-        listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
+        listView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 
         ArrayList<String> options = new ArrayList<>();
         auth= FirebaseAuth.getInstance();
@@ -97,9 +95,6 @@ public class ShowOnePoll extends AppCompatActivity {
 
             }
         });
-
-
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
