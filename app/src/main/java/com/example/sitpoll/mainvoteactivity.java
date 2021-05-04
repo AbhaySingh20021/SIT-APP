@@ -49,16 +49,7 @@ public class mainvoteactivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("SitApp");
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Loginactivity.class);
-                startActivity(intent);
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                     //   .setAction("Action", null).show();
-            }
-        });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
 
