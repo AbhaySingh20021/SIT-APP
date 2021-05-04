@@ -44,6 +44,8 @@ public class CreatePollFragment extends Fragment {
         maps.put("option1",option1.getText().toString());
         maps.put("option2",option2.getText().toString());
         maps.put("option3",option3.getText().toString());
+        maps.put("option4",option4.getText().toString());
+
 
         try {
 
@@ -69,16 +71,15 @@ public class CreatePollFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-
-
         createPOllModel = new ViewModelProvider(this).get(CreatePOllModel.class);
 
         View root = inflater.inflate(R.layout.fragment_poll, container, false);
+        question= root.findViewById(R.id.question);
 
-         option1 = root.findViewById(R.id.option1);
+        option1 = root.findViewById(R.id.option1);
         option2= root.findViewById(R.id.option2);
         option3= root.findViewById(R.id.option3);
-        question= root.findViewById(R.id.question);
+        option4= root.findViewById(R.id.option4);
         mAuth= FirebaseDatabase.getInstance();
         createtv =root.findViewById(R.id.createtv);
         createtv.setOnClickListener(new View.OnClickListener() {

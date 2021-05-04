@@ -9,12 +9,12 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="346dp"
-        android:layout_height="100dp"
+        android:layout_width="325dp"
+        android:layout_height="69dp"
         android:layout_marginStart="42dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="535dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="614dp"
         android:gravity="center"
         android:text="Create POLL"
         android:textColor="#0AF8F8"
@@ -22,18 +22,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/createtv"
-        android:layout_width="314dp"
-        android:layout_height="87dp"
+        android:layout_width="282dp"
+        android:layout_height="59dp"
         android:layout_marginStart="55dp"
         android:layout_marginEnd="42dp"
-        android:layout_marginBottom="74dp"
+        android:layout_marginBottom="52dp"
         android:clickable="true"
         android:fontFamily="@font/berkshire_swash"
         android:gravity="center"
@@ -43,14 +41,14 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/question"
         android:layout_width="0dp"
         android:layout_height="65dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="441dp"
+        android:layout_marginBottom="492dp"
         android:ems="10"
         android:fontFamily="cursive"
         android:hint="Enter Your Question Here"
@@ -60,14 +58,14 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/option1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="354dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="396dp"
         android:ems="10"
         android:fontFamily="cursive"
         android:hint="Option 1"
@@ -77,16 +75,14 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/option2"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="65dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="248dp"
+        android:layout_marginBottom="308dp"
         android:ems="10"
         android:fontFamily="cursive"
         android:hint="Option 2"
@@ -96,16 +92,14 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/option1" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/option3"
-        android:layout_width="402dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="144dp"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="228dp"
         android:ems="10"
         android:fontFamily="cursive"
         android:hint="Option 3"
@@ -115,7 +109,23 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/option2" />
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/option4"
+        android:layout_width="411dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="133dp"
+        android:ems="10"
+        android:fontFamily="cursive"
+        android:hint="Option 4"
+        android:inputType="textPersonName"
+        android:textColor="#F1E8E8"
+        android:textColorHint="#0ACCB1"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.sitpoll.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +41,109 @@ public class ShowOnePoll extends AppCompatActivity {
 
     }
 
+    public void saveanswers(int position){
+        String user_uid= auth.getCurrentUser().getUid();
+        String quesUuid= intent.getStringExtra("quesUuid");
+
+        switch (position){
+            case 0:{
+                FirebaseDatabase.getInstance().getReference().child("Polls").child(quesUuid).child("VoteCount").child("A").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                    @Override
+                    public void onSuccess(DataSnapshot snapshot) {
+                        if(snapshot.getValue()!=null) {
+                            long values = (long) snapshot.getValue();
+                            FirebaseDatabase.getInstance()
+                                    .getReference().child("Polls").child(quesUuid).child("VoteCount").child("A").setValue(values + 1);
+                        }
+                        else {
+                            FirebaseDatabase.getInstance()
+                                    .getReference().child("Polls").child(quesUuid).child("VoteCount").child("A").setValue(1);
+                        }
+
+
+                    }
+                });
+
+
+
+                break;
+            }
+            case 1:{
+                FirebaseDatabase.getInstance().getReference().child("Polls").child(quesUuid).child("VoteCount").child("B").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                    @Override
+                    public void onSuccess(DataSnapshot snapshot) {
+                        if(snapshot.getValue()!=null) {
+                            long values = (long) snapshot.getValue();
+                            FirebaseDatabase.getInstance()
+                                    .getReference().child("Polls").child(quesUuid).child("VoteCount").child("B").setValue(values + 1);
+                        }
+                        else {
+                            FirebaseDatabase.getInstance()
+                                    .getReference().child("Polls").child(quesUuid).child("VoteCount").child("B").setValue(1);
+                        }
+
+
+                    }
+                });
+
+
+                break;
+            }case 2:{
+                FirebaseDatabase.getInstance().getReference().child("Polls").child(quesUuid).child("VoteCount").child("C").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                    @Override
+                    public void onSuccess(DataSnapshot snapshot) {
+                        if(snapshot.getValue()!=null) {
+                            long values = (long) snapshot.getValue();
+                            FirebaseDatabase.getInstance()
+                                    .getReference().child("Polls").child(quesUuid).child("VoteCount").child("C").setValue(values + 1);
+                        }
+                        else {
+                            FirebaseDatabase.getInstance()
+                                    .getReference().child("Polls").child(quesUuid).child("VoteCount").child("C").setValue(1);
+                        }
+
+
+                    }
+                });
+
+
+                break;
+            }
+            case 3:{
+                FirebaseDatabase.getInstance().getReference().child("Polls").child(quesUuid).child("VoteCount").child("D").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                    @Override
+                    public void onSuccess(DataSnapshot snapshot) {
+                        if(snapshot.getValue()!=null) {
+                            long values = (long) snapshot.getValue();
+                            FirebaseDatabase.getInstance()
+                                    .getReference().child("Polls").child(quesUuid).child("VoteCount").child("D").setValue(values + 1);
+                        }
+                        else {
+                            FirebaseDatabase.getInstance()
+                                    .getReference().child("Polls").child(quesUuid).child("VoteCount").child("D").setValue(1);
+                        }
+
+
+                    }
+                });
+
+                break;
+
+            }
+            default: {
+                System.out.println("no vale saved");
+            break;
+            }
+
+
+        }
+
+
+
+
+
+    }
+
 
 
     @Override
@@ -64,11 +168,13 @@ public class ShowOnePoll extends AppCompatActivity {
                 .child("Polls").child(quesUuid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                options.clear();
                 questiontopic.setText(Objects.requireNonNull(snapshot.child("question").getValue()).toString());
                 from.setText(Objects.requireNonNull(snapshot.child("from").getValue()).toString());
                 options.add(Objects.requireNonNull(snapshot.child("option1").getValue()).toString());
                 options.add(Objects.requireNonNull(snapshot.child("option2").getValue()).toString());
                 options.add(Objects.requireNonNull(snapshot.child("option3").getValue()).toString());
+                options.add(Objects.requireNonNull(snapshot.child("option4").getValue()).toString());
                 arrayAdapter.notifyDataSetChanged();
 
             }
@@ -85,8 +191,10 @@ public class ShowOnePoll extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("UserData").child(user_uid).child("pollsanswered").child(quesUuid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.getValue()!=null){
                 long option= (long) snapshot.getValue();
                 listView.setItemChecked((int) option,true);
+                }
 
             }
 
@@ -100,6 +208,7 @@ public class ShowOnePoll extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectans(position);
+                saveanswers(position);
             }
         });
 

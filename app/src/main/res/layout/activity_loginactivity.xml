@@ -49,7 +49,7 @@
 
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/enter_name"
+        android:hint="@string/enter_email"
 
         android:inputType="textPersonName"
         android:textColor="#F8F7F5"

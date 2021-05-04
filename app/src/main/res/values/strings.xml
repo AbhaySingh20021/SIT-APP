@@ -31,5 +31,10 @@
         <!-- Twitter consumer key and secret -->
         <string name="twitter_consumer_key" translatable="false">YOUR_CONSUMER_KEY</string>
         <string name="twitter_consumer_secret" translatable="false">YOUR_CONSUMER_SECRET</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="log_in">Log in</string>
+    <string name="or">----------------------OR----------------------</string>
+    <string name="or">----------------------OR----------------------</string>
+    <string name="new_here_create_an_account">New Here? Create an Account</string>
 
 </resources>
