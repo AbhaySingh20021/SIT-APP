@@ -264,6 +264,11 @@ public class ShowOnePoll extends AppCompatActivity {
                 if(snapshot.getValue()!=null){
                     long option= (long) snapshot.getValue();
                     listView.setItemChecked((int) option,true);
+                    listView.getChildAt((int) option).setBackground(getResources().getDrawable(R.drawable.optionbg));
+
+
+                    disablelist();
+
 
                 }
 
@@ -280,12 +285,10 @@ public class ShowOnePoll extends AppCompatActivity {
             }
         });
 
-
-
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    listView.getChildAt(position).setBackground(getResources().getDrawable(R.drawable.roundbutton));
+                    listView.getChildAt(position).setBackground(getResources().getDrawable(R.drawable.optionbg));
                     selectans(position);
                     saveanswers(position);
                     disablelist();

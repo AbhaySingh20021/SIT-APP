@@ -16,6 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".AdminActivity"></activity>
+        <activity android:name=".Userlist" />
         <activity android:name=".ui.showPolls.ShowOnePoll" />
         <activity
             android:name=".mainvoteactivity"

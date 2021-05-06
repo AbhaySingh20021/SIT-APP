@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ public class Loginactivity extends AppCompatActivity {
     EditText email1;
     EditText password1;
     FirebaseAuth auth;
+    Switch users;
 
 
 
@@ -73,30 +76,41 @@ public class Loginactivity extends AppCompatActivity {
 
     public void loginUser(View view){
 
-        String email1_txt=email1.getText().toString();
-        String pass1_txt=password1.getText().toString();
 
-        if(email1_txt.equals("") || pass1_txt.equals(""))
-            Toast.makeText(this,"Empty password or email",Toast.LENGTH_SHORT).show();
-        else if(pass1_txt.length()<6){
-            Toast.makeText(this,"Password to short",Toast.LENGTH_SHORT).show();
-        }
-        else {
-            auth.signInWithEmailAndPassword(email1_txt, pass1_txt).addOnCompleteListener(Loginactivity.this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(Loginactivity.this,"Login Successful",Toast.LENGTH_SHORT).show();
 
-                        Intent intent=new Intent(getApplicationContext(),mainvoteactivity.class);
-                        startActivity(intent);
+
+
+            String email1_txt = email1.getText().toString();
+            String pass1_txt = password1.getText().toString();
+
+            if (email1_txt.equals("") || pass1_txt.equals(""))
+                Toast.makeText(this, "Empty password or email", Toast.LENGTH_SHORT).show();
+            else if (pass1_txt.length() < 6) {
+                Toast.makeText(this, "Password to short", Toast.LENGTH_SHORT).show();
+            } else {
+                auth.signInWithEmailAndPassword(email1_txt, pass1_txt).addOnCompleteListener(Loginactivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Loginactivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                            if(users.isChecked()){
+                                Intent intent = new Intent(getApplicationContext(),AdminActivity.class);
+                                startActivity(intent);
+
+                            }
+                            else {
+                                Intent intent = new Intent(getApplicationContext(), mainvoteactivity.class);
+
+                                startActivity(intent);
+                            }
+                        } else {
+                            Toast.makeText(Loginactivity.this, "Error", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else {
-                        Toast.makeText(Loginactivity.this,"Error",Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
+                });
+            }
+
     }
 
     @Override
@@ -106,6 +120,21 @@ public class Loginactivity extends AppCompatActivity {
         email1= findViewById(R.id.personName2);
         password1= findViewById(R.id.password2);
         auth=FirebaseAuth.getInstance();
+        users= findViewById(R.id.switch1);
+
+        users.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(users.isChecked()){
+                    users.setText("Admin");
+                }
+
+            }
+        });
+
+
+
+
 
 
 

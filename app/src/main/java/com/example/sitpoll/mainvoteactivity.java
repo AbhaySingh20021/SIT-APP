@@ -1,5 +1,6 @@
 package com.example.sitpoll;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.parse.ParseUser;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -48,6 +50,8 @@ public class mainvoteactivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         toolbar.setTitle("SitApp");
+
+
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

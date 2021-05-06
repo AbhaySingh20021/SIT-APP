@@ -43,6 +43,8 @@ public class showPollsFragment extends Fragment {
         ArrayList<String> quesUuid = new ArrayList<String>();
 
         ListView listView = root.findViewById(R.id.listview1);
+        questions.clear();
+        quesUuid.clear();
         ArrayAdapter arrayadpapter= new ArrayAdapter( getActivity(),android.R.layout.simple_list_item_1,questions);
         FirebaseDatabase.getInstance().getReference().child("Polls").addChildEventListener(new ChildEventListener() {
             @Override
