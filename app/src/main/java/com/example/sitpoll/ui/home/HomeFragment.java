@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.sitpoll.MainActivity;
 import com.example.sitpoll.R;
+import com.example.sitpoll.ui.CreatePoll.CreatePollFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -78,8 +79,8 @@ public class HomeFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(),CreatePollFragment.class);
+                ///FirebaseAuth.getInstance().signOut();
                 if(FirebaseAuth.getInstance().getCurrentUser()!=null){
                     Toast.makeText(getActivity(), "Sign Out Succesfull!", Toast.LENGTH_SHORT).show();
                 }

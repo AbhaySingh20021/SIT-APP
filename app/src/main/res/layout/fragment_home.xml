@@ -60,36 +60,41 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bigusername"
-            app:layout_constraintVertical_bias="0.694" />
+            app:layout_constraintVertical_bias="0.708" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/sample_poll"
-        android:textAlignment="center"
-        android:textColor="#EFE8E8"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="73dp"
-        android:layout_height="83dp"
+        android:layout_width="78dp"
+        android:layout_height="79dp"
         android:layout_marginStart="323dp"
-        android:layout_marginTop="233dp"
         android:layout_marginEnd="26dp"
         android:layout_marginBottom="32dp"
+        android:background="#090909"
         android:clickable="true"
-        android:src="@android:drawable/ic_delete"
+        android:foreground="@android:drawable/ic_input_add"
+        android:paddingHorizontal="20sp"
+        android:paddingVertical="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:useCompatPadding="true" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="294dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="339dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="257dp"
+        android:background="@drawable/roundbutton"
+        android:fontFamily="@font/berkshire_swash"
+        android:text="@string/create_poll"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

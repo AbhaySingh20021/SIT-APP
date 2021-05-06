@@ -24,6 +24,8 @@
             android:label="@string/title_activity_mainvoteactivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".SignupActivity" />
+        <activity android:name=".ViewStudentInfo" />
+
         <activity android:name=".Loginactivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

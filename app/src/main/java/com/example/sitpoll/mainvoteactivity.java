@@ -4,12 +4,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.sitpoll.ui.CreatePoll.CreatePollFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -80,6 +83,20 @@ public class mainvoteactivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.mainvoteactivity, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if(item.getItemId()== R.id.logout){
+            Intent intent = new Intent(mainvoteactivity.this, MainActivity.class);
+            FirebaseAuth.getInstance().signOut();
+            if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+                Toast.makeText(mainvoteactivity.this, "Sign Out Succesfull!", Toast.LENGTH_SHORT).show();
+            }
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
