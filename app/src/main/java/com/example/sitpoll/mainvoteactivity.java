@@ -52,10 +52,9 @@ public class mainvoteactivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
+      ///  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      //  getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setTitle("SitApp");
-
-
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
@@ -96,6 +95,19 @@ public class mainvoteactivity extends AppCompatActivity {
             }
             startActivity(intent);
         }
+
+        /*switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(mainvoteactivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+
+
+        }*/
+
+
         return super.onOptionsItemSelected(item);
     }
 

@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,41 +38,39 @@ public class Userlist extends AppCompatActivity {
     ListView listView;
 
 
-    public void longpressdelete(int i){
+    public void longpressdelete(int i) {
 
-            listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    new AlertDialog.Builder(Userlist.this)
-                            .setTitle("Delete?")
-                            .setMessage("Are you sure you want to Delete?")
-                            .setNegativeButton(android.R.string.no, null)
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    if(i ==0)
-                                    deletebase(position,0);
-
-                                    else
-                                        deletebase(position,1);
-                                    arrayadpapter.notifyDataSetChanged();
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                new AlertDialog.Builder(Userlist.this)
+                        .setTitle("Delete?")
+                        .setMessage("Are you sure you want to Delete?")
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
 
-                                }
-                            }).create().show();
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (i == 0)
+                                    deletebase(position, 0);
 
-                    return true;
-                }
-            });
-        }
+                                else
+                                    deletebase(position, 1);
+                                arrayadpapter.notifyDataSetChanged();
 
 
+                            }
+                        }).create().show();
+
+                return true;
+            }
+        });
+    }
 
 
-    public void deletebase(int position,int i){
-        if(i==0) {
+    public void deletebase(int position, int i) {
+        if (i == 0) {
             userlist.remove(position);
 
             FirebaseDatabase.getInstance().getReference().child("UserData").child(userid.get(position)).removeValue(new DatabaseReference.CompletionListener() {
@@ -82,8 +82,7 @@ public class Userlist extends AppCompatActivity {
                 }
             });
             userid.remove(position);
-        }
-        else if(i==1) {
+        } else if (i == 1) {
             polllist.remove(position);
 
             FirebaseDatabase.getInstance().getReference().child("Polls").child(pollId.get(position)).removeValue(new DatabaseReference.CompletionListener() {
@@ -103,14 +102,22 @@ public class Userlist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlist);
-         listView= findViewById(R.id.lists);
+        listView = findViewById(R.id.lists);
         Intent intent = getIntent();
+        Toolbar toolbar = findViewById(R.id.toolbar2);
+
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         userid.clear();
         userlist.clear();
         pollId.clear();
         polllist.clear();
         fromId.clear();
-        if(intent.getStringExtra("list").equals("polls")){
+        if (intent.getStringExtra("list").equals("polls")) {
+            getSupportActionBar().setTitle("Poll List");
+
 
             FirebaseDatabase.getInstance().getReference().child("Polls").addChildEventListener(new ChildEventListener() {
                 @Override
@@ -119,7 +126,7 @@ public class Userlist extends AppCompatActivity {
                     polllist.add(question);
                     pollId.add(snapshot.getKey().toString());
 
-                    arrayadpapter= new ArrayAdapter( Userlist.this,android.R.layout.simple_list_item_1,polllist);
+                    arrayadpapter = new ArrayAdapter(Userlist.this, android.R.layout.simple_list_item_1, polllist);
                     listView.setAdapter(arrayadpapter);
 
                     arrayadpapter.notifyDataSetChanged();
@@ -127,55 +134,70 @@ public class Userlist extends AppCompatActivity {
                 }
 
                 @Override
-                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
 
                 @Override
-                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                }
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError error) { }
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
             });
 
             longpressdelete(1);
 
 
-        }
-        else {
+        } else {
+            getSupportActionBar().setTitle("User List");
+
 
             FirebaseDatabase.getInstance().getReference().child("UserData").addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                     String username = snapshot.child("name").getValue().toString();
                     String useid = snapshot.getKey();
-                    fromId.add(snapshot.child("email").getValue().toString());
-                    userid.add(useid);
-                    userlist.add(username);
-                    arrayadpapter = new ArrayAdapter( Userlist.this,android.R.layout.simple_list_item_1,userlist);
+                    if (!username.equals("Admin")) {
+                        userlist.add(username);
+                        userid.add(useid);
+                        fromId.add(snapshot.child("email").getValue().toString());
+
+                    }
+
+                    arrayadpapter = new ArrayAdapter(Userlist.this, android.R.layout.simple_list_item_1, userlist);
                     listView.setAdapter(arrayadpapter);
                     arrayadpapter.notifyDataSetChanged();
 
                 }
 
                 @Override
-                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
 
                 @Override
-                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                }
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError error) { }
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
             });
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent1= new Intent(getApplicationContext(),ViewStudentInfo.class);
-                    intent1.putExtra("username",userid.get(position));
-                    intent1.putExtra("from",fromId.get(position));
+                    Intent intent1 = new Intent(getApplicationContext(), ViewStudentInfo.class);
+                    intent1.putExtra("username", userid.get(position));
+                    intent1.putExtra("from", fromId.get(position));
 
                     startActivity(intent1);
                 }
@@ -187,4 +209,22 @@ public class Userlist extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(Userlist.this, AdminActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+
+
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
 }
+

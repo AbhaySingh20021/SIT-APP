@@ -51,31 +51,42 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        auth= FirebaseAuth.getInstance();
-        Button button= findViewById(R.id.button2);
+        auth = FirebaseAuth.getInstance();
+        Button button = new Button(this);
 
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(getString(R.string.default_web_client_id))
+                        .requestEmail()
+                        .build();
+                mGoogleSignInClient = GoogleSignIn.getClient(MainActivity.this, gso);
+                signIn();
+            }
+        });
 
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                                .requestIdToken(getString(R.string.default_web_client_id))
-                                .requestEmail()
-                                .build();
-                        mGoogleSignInClient = GoogleSignIn.getClient(MainActivity.this, gso);
-                        signIn();
-                    }
-                });
+
+        if (auth.getCurrentUser() != null) {
+            System.out.println(auth.getCurrentUser().getEmail());
+            System.out.println(auth.getCurrentUser().getDisplayName());
 
 
-        if(auth.getCurrentUser()!= null){
-            Intent intent= new Intent(getApplicationContext(),mainvoteactivity.class);
-            startActivity(intent);
+            if (auth.getCurrentUser().getEmail().equals("admin@gmail.com")) {
+                Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                startActivity(intent);
 
+                }
+                else  {
+                 Intent intent = new Intent(getApplicationContext(), mainvoteactivity.class);
+                startActivity(intent);
+            }
         }
 
+
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -86,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
+                System.out.println(account.getEmail().toString());
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
@@ -102,9 +114,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            System.out.println(user.getDisplayName());
 
                         } else {
                             // If sign in fails, display a message to the user.

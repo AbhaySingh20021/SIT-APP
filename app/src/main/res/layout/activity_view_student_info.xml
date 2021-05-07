@@ -71,11 +71,14 @@
 
     <ListView
         android:id="@+id/pollsCreatedListView"
+        style="@android:style/Widget.Material.Light.ListView"
         android:layout_width="370dp"
         android:layout_height="260dp"
         android:layout_marginStart="33dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
+        android:background="#090909"
+        android:divider="@drawable/mainscreen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

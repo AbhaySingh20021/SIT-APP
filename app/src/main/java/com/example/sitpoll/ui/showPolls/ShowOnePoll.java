@@ -240,7 +240,7 @@ public class ShowOnePoll extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 options.clear();
                 questiontopic.setText(Objects.requireNonNull(snapshot.child("question").getValue()).toString());
-                from.setText(Objects.requireNonNull(snapshot.child("from").getValue()).toString());
+                from.setText("From- "+Objects.requireNonNull(snapshot.child("from").getValue()).toString());
                 options.add(Objects.requireNonNull(snapshot.child("option1").getValue()).toString());
                 options.add(Objects.requireNonNull(snapshot.child("option2").getValue()).toString());
                 options.add(Objects.requireNonNull(snapshot.child("option3").getValue()).toString());
@@ -288,7 +288,7 @@ public class ShowOnePoll extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    listView.getChildAt(position).setBackground(getResources().getDrawable(R.drawable.optionbg));
+                    listView.getChildAt(position).setBackground(getResources().getDrawable(R.drawable.mainscreen));
                     selectans(position);
                     saveanswers(position);
                     disablelist();

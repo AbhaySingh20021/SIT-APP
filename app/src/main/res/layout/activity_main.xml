@@ -5,37 +5,34 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/roundtf"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="270dp"
-        android:layout_height="59dp"
-        android:fontFamily="@font/berkshire_swash"
+        android:layout_width="335dp"
+        android:layout_height="118dp"
+        android:fontFamily="sans-serif-medium"
         android:gravity="fill"
         android:text="@string/app_name"
         android:textAlignment="center"
-        android:textColor="#771111"
-        android:textSize="44sp"
-        android:textStyle="bold"
+        android:textColor="#FBF6F6"
+        android:textSize="52sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.074"
+        app:layout_constraintVertical_bias="0.386"
         tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/login"
-        android:layout_width="347dp"
-        android:layout_height="74dp"
+        android:layout_width="292dp"
+        android:layout_height="79dp"
 
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="173dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="484dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="31dp"
         android:background="@drawable/roundbutton"
         android:fontFamily="sans-serif-medium"
         android:onClick="loginactivity"
@@ -45,76 +42,43 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_height="79dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="355dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="297dp"
-        android:background="@drawable/gbutton"
-        android:fontFamily="@font/berkshire_swash"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="269dp"
-        android:layout_marginBottom="424dp"
-        android:fontFamily="@font/berkshire_swash"
-        android:text="@string/or"
-        android:textColor="#04D9FA"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="481dp"
-        android:layout_marginBottom="212dp"
-        android:fontFamily="@font/berkshire_swash"
-        android:text="@string/or"
-        android:textColor="#0BD1EF"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="396dp"
-        android:layout_height="116dp"
+        android:layout_width="408dp"
+        android:layout_height="81dp"
         android:clickable="true"
-        android:fontFamily="@font/berkshire_swash"
+        android:fontFamily="sans-serif-medium"
         android:lines="2"
         android:maxLines="2"
         android:minLines="2"
         android:onClick="signupactivity"
-        android:text="New Here?        Create an Account!"
-        android:textColor="#0B0A0A"
-        android:textSize="45sp"
+        android:text="@string/new_here_create_an_account"
+        android:textColor="#FBF6F6"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.955" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="178dp"
+        android:layout_height="147dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginBottom="537dp"
+        android:background="#EFB0B0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/sitapp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

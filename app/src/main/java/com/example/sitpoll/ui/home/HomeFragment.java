@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.sitpoll.MainActivity;
 import com.example.sitpoll.R;
+import com.example.sitpoll.ViewStudentInfo;
 import com.example.sitpoll.ui.CreatePoll.CreatePollFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,11 +31,23 @@ import com.google.firebase.database.ValueEventListener;
 
 public class HomeFragment extends Fragment {
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
+
+
+    }
+
+    public void userlist1(){
+
+        Intent intent1= new Intent(getActivity(),ViewStudentInfo.class);
+        intent1.putExtra("username",FirebaseAuth.getInstance().getCurrentUser().getUid());
+        intent1.putExtra("from",FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        startActivity(intent1);
 
 
     }
@@ -75,15 +89,19 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.bigusername);
         final TextView textView1 = root.findViewById(R.id.username);
+        final Button userinfo = root.findViewById(R.id.button7);
+        userinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userlist1();
+            }
+        });
+
         FloatingActionButton fab = root.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),CreatePollFragment.class);
-                ///FirebaseAuth.getInstance().signOut();
-                if(FirebaseAuth.getInstance().getCurrentUser()!=null){
-                    Toast.makeText(getActivity(), "Sign Out Succesfull!", Toast.LENGTH_SHORT).show();
-                }
+                Intent intent = new Intent(getActivity(),createpollActivity.class);
                 startActivity(intent);
 
             }

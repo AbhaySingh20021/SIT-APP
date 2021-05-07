@@ -10,24 +10,37 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/sitapp"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@drawable/mainscreen"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AdminActivity"></activity>
-        <activity android:name=".Userlist" />
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/toolbar" />
+
+        <activity android:name=".ui.home.createpollActivity" />
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".Userlist"
+            />
         <activity android:name=".ui.showPolls.ShowOnePoll" />
         <activity
             android:name=".mainvoteactivity"
             android:label="@string/title_activity_mainvoteactivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".ViewStudentInfo" />
-
-        <activity android:name=".Loginactivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".SignupActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".ViewStudentInfo"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Loginactivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
