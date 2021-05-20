@@ -54,25 +54,26 @@ public class SignupActivity extends AppCompatActivity {
         if(email_txt.equals("") || pass_txt.equals("") || name_txt.equals("") || prn_txt.equals(""))
             Toast.makeText(this,"Enter all details",Toast.LENGTH_SHORT).show();
         else if(pass_txt.length()<6){
-            Toast.makeText(this,"Password to short",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Password too short",Toast.LENGTH_SHORT).show();
         }
-        else{
-            auth.createUserWithEmailAndPassword(email_txt,pass_txt).addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(SignupActivity.this,"Account Created",Toast.LENGTH_SHORT).show();
-                        map.put("name",name_txt);
-                        map.put("prn",prn_txt);
-                        map.put("email",email_txt);
-                        String user_uid= auth.getCurrentUser().getUid();
-                        FirebaseDatabase.getInstance().getReference().child("UserData").child(user_uid).updateChildren(map);
+        else {
+            try {
+                auth.createUserWithEmailAndPassword(email_txt, pass_txt).addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(SignupActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
+                            map.put("name", name_txt);
+                            map.put("prn", prn_txt);
+                            map.put("email", email_txt);
+                            String user_uid = auth.getCurrentUser().getUid();
+                            FirebaseDatabase.getInstance().getReference().child("UserData").child(user_uid).updateChildren(map);
+                        }
                     }
-                    else {
-                        Toast.makeText(SignupActivity.this, "Account not Created", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+                });
+            }catch (Exception e){
+                Toast.makeText(SignupActivity.this, "Account not Created", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }

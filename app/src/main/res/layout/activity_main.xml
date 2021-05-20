@@ -49,8 +49,8 @@
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="408dp"
-        android:layout_height="81dp"
+        android:layout_width="386dp"
+        android:layout_height="77dp"
         android:clickable="true"
         android:fontFamily="sans-serif-medium"
         android:lines="2"
@@ -59,13 +59,13 @@
         android:onClick="signupactivity"
         android:text="@string/new_here_create_an_account"
         android:textColor="#FBF6F6"
-        android:textSize="30sp"
+        android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.915" />
 
     <ImageView
         android:id="@+id/imageView"

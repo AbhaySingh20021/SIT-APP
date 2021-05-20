@@ -40,13 +40,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.006" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="56dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="55dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="16dp"
         android:background="#101010"
         android:clickable="true"
         android:foreground="@android:drawable/ic_input_add"
@@ -61,17 +61,18 @@
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="271dp"
-        android:layout_height="84dp"
+        android:layout_width="295dp"
+        android:layout_height="103dp"
         android:background="@drawable/roundbutton"
         android:fontFamily="serif"
         android:text="User Details"
+        android:textColor="#0E0E0E"
         android:textSize="36sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.637" />
+        app:layout_constraintVertical_bias="0.702" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

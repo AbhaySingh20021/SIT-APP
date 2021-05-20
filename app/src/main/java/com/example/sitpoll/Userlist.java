@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -37,6 +38,108 @@ public class Userlist extends AppCompatActivity {
     ArrayAdapter arrayadpapter;
     ListView listView;
 
+    class newlist{
+        public
+
+        void polllist(){
+            {
+                getSupportActionBar().setTitle("Poll List");
+
+
+                FirebaseDatabase.getInstance().getReference().child("Polls").addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                        String question = snapshot.child("question").getValue().toString();
+                        polllist.add(question);
+                        pollId.add(snapshot.getKey().toString());
+
+                        arrayadpapter = new ArrayAdapter(Userlist.this, android.R.layout.simple_list_item_1, polllist);
+                        listView.setAdapter(arrayadpapter);
+
+                        arrayadpapter.notifyDataSetChanged();
+
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+
+                longpressdelete(1);
+
+
+            }
+        }
+        void userlist(){
+
+            getSupportActionBar().setTitle("User List");
+
+
+            FirebaseDatabase.getInstance().getReference().child("UserData").addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    String username = snapshot.child("name").getValue().toString();
+                    String useid = snapshot.getKey();
+                    if (!username.equals("Admin")) {
+                        userlist.add(username);
+                        userid.add(useid);
+                        fromId.add(snapshot.child("email").getValue().toString());
+
+                    }
+
+                    arrayadpapter = new ArrayAdapter(Userlist.this, android.R.layout.simple_list_item_1, userlist);
+                    listView.setAdapter(arrayadpapter);
+                    arrayadpapter.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent1 = new Intent(getApplicationContext(), ViewStudentInfo.class);
+                    intent1.putExtra("username", userid.get(position));
+                    intent1.putExtra("from", fromId.get(position));
+
+                    startActivity(intent1);
+                }
+            });
+
+            longpressdelete(0);
+
+
+
+        }
+
+    }
 
     public void longpressdelete(int i) {
 
@@ -103,8 +206,9 @@ public class Userlist extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlist);
         listView = findViewById(R.id.lists);
-        Intent intent = getIntent();
         Toolbar toolbar = findViewById(R.id.toolbar2);
+        Intent intent = getIntent();
+
 
         setSupportActionBar(toolbar);
 
@@ -115,101 +219,21 @@ public class Userlist extends AppCompatActivity {
         pollId.clear();
         polllist.clear();
         fromId.clear();
-        if (intent.getStringExtra("list").equals("polls")) {
-            getSupportActionBar().setTitle("Poll List");
 
+        newlist myobj= new newlist();
 
-            FirebaseDatabase.getInstance().getReference().child("Polls").addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                    String question = snapshot.child("question").getValue().toString();
-                    polllist.add(question);
-                    pollId.add(snapshot.getKey().toString());
-
-                    arrayadpapter = new ArrayAdapter(Userlist.this, android.R.layout.simple_list_item_1, polllist);
-                    listView.setAdapter(arrayadpapter);
-
-                    arrayadpapter.notifyDataSetChanged();
-
-                }
-
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                }
-            });
-
-            longpressdelete(1);
-
-
-        } else {
-            getSupportActionBar().setTitle("User List");
-
-
-            FirebaseDatabase.getInstance().getReference().child("UserData").addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                    String username = snapshot.child("name").getValue().toString();
-                    String useid = snapshot.getKey();
-                    if (!username.equals("Admin")) {
-                        userlist.add(username);
-                        userid.add(useid);
-                        fromId.add(snapshot.child("email").getValue().toString());
-
-                    }
-
-                    arrayadpapter = new ArrayAdapter(Userlist.this, android.R.layout.simple_list_item_1, userlist);
-                    listView.setAdapter(arrayadpapter);
-                    arrayadpapter.notifyDataSetChanged();
-
-                }
-
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                }
-            });
-
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent1 = new Intent(getApplicationContext(), ViewStudentInfo.class);
-                    intent1.putExtra("username", userid.get(position));
-                    intent1.putExtra("from", fromId.get(position));
-
-                    startActivity(intent1);
-                }
-            });
-
-            longpressdelete(0);
+        if (intent.getStringExtra("list").equals("polls"))
+        {
+            myobj.polllist();
 
         }
+        else myobj.userlist();
+
+
+
 
 
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 

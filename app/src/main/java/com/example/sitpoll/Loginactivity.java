@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -39,10 +41,16 @@ public class Loginactivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if(currentUser != null){
-            currentUser.reload();
-        }
+
+       try {
+           FirebaseUser currentUser = auth.getCurrentUser();
+           if (currentUser != null) {
+               currentUser.reload();
+           }
+       }catch (Exception q){
+           Log.i("Login Error","Account Not Found");
+
+       }
     }
 
 
@@ -88,32 +96,33 @@ public class Loginactivity extends AppCompatActivity {
             else if (pass1_txt.length() < 6) {
                 Toast.makeText(this, "Password to short", Toast.LENGTH_SHORT).show();
             } else {
-                auth.signInWithEmailAndPassword(email1_txt, pass1_txt).addOnCompleteListener(Loginactivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(Loginactivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                try {
+                    auth.signInWithEmailAndPassword(email1_txt, pass1_txt).addOnCompleteListener(Loginactivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(Loginactivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
-                            if(users.isChecked()){
-                                if(email1_txt.equals("Admin@gmail.com")) {
-                                    Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-                                    startActivity(intent);
-                                }
-                                else
-                                    Toast.makeText(Loginactivity.this, "Wrong Credentials", Toast.LENGTH_SHORT).show();
+                                if (users.isChecked()) {
+                                    if (email1_txt.equals("Admin@gmail.com")) {
+                                        Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                                        startActivity(intent);
+                                    } else
+                                        Toast.makeText(Loginactivity.this, "Wrong Credentials", Toast.LENGTH_SHORT).show();
 
-                            }
-                            else {
-                                if(!email1_txt.equals("Admin@gmail.com")) {
-                                    Intent intent = new Intent(getApplicationContext(), mainvoteactivity.class);
-                                    startActivity(intent);
+                                } else {
+                                    if (!email1_txt.equals("Admin@gmail.com")) {
+                                        Intent intent = new Intent(getApplicationContext(), mainvoteactivity.class);
+                                        startActivity(intent);
+                                    }
                                 }
                             }
-                        } else {
-                            Toast.makeText(Loginactivity.this, "Error", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                });
+                    });
+                }catch (Exception e){
+                    Toast.makeText(Loginactivity.this, "Error", Toast.LENGTH_SHORT).show();
+
+                }
             }
 
     }
