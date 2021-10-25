@@ -31,8 +31,6 @@ public class Userlist extends AppCompatActivity {
     ArrayList<String> userlist = new ArrayList<>();
     ArrayList<String> userid = new ArrayList<>();
     ArrayList<String> pollId = new ArrayList<>();
-
-
     ArrayList<String> polllist = new ArrayList<>();
     ArrayList<String> fromId = new ArrayList<String>();
     ArrayAdapter arrayadpapter;
@@ -208,10 +206,7 @@ public class Userlist extends AppCompatActivity {
         listView = findViewById(R.id.lists);
         Toolbar toolbar = findViewById(R.id.toolbar2);
         Intent intent = getIntent();
-
-
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         userid.clear();
@@ -219,20 +214,12 @@ public class Userlist extends AppCompatActivity {
         pollId.clear();
         polllist.clear();
         fromId.clear();
-
         newlist myobj= new newlist();
-
         if (intent.getStringExtra("list").equals("polls"))
         {
             myobj.polllist();
-
         }
         else myobj.userlist();
-
-
-
-
-
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

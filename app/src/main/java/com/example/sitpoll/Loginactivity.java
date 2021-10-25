@@ -104,14 +104,14 @@ public class Loginactivity extends AppCompatActivity {
                                 Toast.makeText(Loginactivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
                                 if (users.isChecked()) {
-                                    if (email1_txt.equals("Admin@gmail.com")) {
+                                    if (email1_txt.equals("anguad@gmail.com")) {
                                         Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
                                         startActivity(intent);
                                     } else
                                         Toast.makeText(Loginactivity.this, "Wrong Credentials", Toast.LENGTH_SHORT).show();
 
                                 } else {
-                                    if (!email1_txt.equals("Admin@gmail.com")) {
+                                    if (!email1_txt.equals("anguad@gmail.com")) {
                                         Intent intent = new Intent(getApplicationContext(), mainvoteactivity.class);
                                         startActivity(intent);
                                     }
@@ -142,6 +142,7 @@ public class Loginactivity extends AppCompatActivity {
                 if(users.isChecked()){
                     users.setText("Admin");
                 }
+                else users.setText("Student");
 
             }
         });

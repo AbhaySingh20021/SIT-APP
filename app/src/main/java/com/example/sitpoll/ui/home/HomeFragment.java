@@ -36,23 +36,15 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
     }
 
     public void userlist1(){
-
         Intent intent1= new Intent(getActivity(),ViewStudentInfo.class);
         intent1.putExtra("username",FirebaseAuth.getInstance().getCurrentUser().getUid());
         intent1.putExtra("from",FirebaseAuth.getInstance().getCurrentUser().getEmail());
         startActivity(intent1);
 
-
     }
-
-
 
     public void onBackPressed() {
         new AlertDialog.Builder(getActivity())
@@ -72,12 +64,7 @@ public class HomeFragment extends Fragment {
 
     }
 
-
-
-
     private HomeViewModel homeViewModel;
-
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -126,13 +113,6 @@ public class HomeFragment extends Fragment {
         });
 
 
-
-
-
-
-
-
-
      /*   FirebaseDatabase.getInstance().getReference().child("UserData").child(FirebaseAuth.getInstance()
                 .getCurrentUser().getUid()).child("name").get()
                 .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -160,9 +140,9 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String username= (String) snapshot.getValue();
                 System.out.println(username);
-                assert username != null;
-                textView.setText(username.substring(0,1));
-                textView1.setText(username);
+                //assert username != null;
+               // textView.setText(username.substring(0,1));
+               // textView1.setText(username);
 
             }
 
@@ -172,15 +152,9 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-
-
-
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-
-
                 //textView.setText(s);
             }
         });

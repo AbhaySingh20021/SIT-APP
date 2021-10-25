@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        if (auth.getCurrentUser() != null) {
+       if (auth.getCurrentUser() != null) {
             System.out.println(auth.getCurrentUser().getEmail());
             System.out.println(auth.getCurrentUser().getDisplayName());
 
